@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../../logic/Provider/TimeChangeNotifier.dart';
 
@@ -16,6 +18,12 @@ class DashboardScreen extends StatelessWidget {
           builder: (context, value, child) => ElevatedButton(
               onPressed: () {
                 value.oneday();
+                PublishSubject<DTime> subject = PublishSubject();
+                subject.stream.listen((event) {
+                  print('on');
+                });
+                subject.add(DTime(1, 2, 3));
+                subject.add(DTime(4, 5, 6));
               },
               child: const Text('진행')),
         ),
