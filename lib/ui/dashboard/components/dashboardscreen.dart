@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
+import 'package:flutter_application_1/logic/Subject/SubjectPool.dart';
+import 'package:flutter_application_1/util/constants.dart';
 import 'package:provider/provider.dart';
-import 'package:rxdart/rxdart.dart';
 
 import '../../../logic/Provider/TimeChangeNotifier.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Column(
       children: [
-        const TimeTable(),
-        Consumer<TimeChangeNotifier>(
-          builder: (context, value, child) => ElevatedButton(
-              onPressed: () {
-                value.oneday();
-                PublishSubject<DTime> subject = PublishSubject();
-                subject.stream.listen((event) {
-                  print('on');
-                });
-                subject.add(DTime(1, 2, 3));
-                subject.add(DTime(4, 5, 6));
-              },
-              child: const Text('진행')),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            const TimeTable(),
+            Consumer<TimeChangeNotifier>(
+              builder: (context, value, child) => ElevatedButton(
+                  onPressed: () {
+                    value.oneday();
+                    var sp = SubjectPool();
+                    sp.subjects[skTime].add(value.today);
+                  },
+                  child: const Text('진행')),
+            ),
+          ],
         ),
+        const Text('자산 그룹(가로로 그래프들)'),
+        const Text('상세 자산 내역(세로로 리스트 형태로 내역들)')
       ],
     ));
   }
