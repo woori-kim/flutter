@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/logic/Classes/CBank.dart';
+import 'package:flutter_application_1/logic/Classes/CCompany.dart';
+import 'package:flutter_application_1/logic/Classes/CPeople.dart';
 import 'package:flutter_application_1/logic/Provider/TimeChangeNotifier.dart';
 import 'package:flutter_application_1/ui/dashboard/mainscreen.dart';
 import 'package:flutter_application_1/util/constants.dart';
@@ -6,6 +9,11 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
+
+  //test code
+  CPeople();
+  CBank();
+  CCompany();
 }
 
 class MyApp extends StatelessWidget {

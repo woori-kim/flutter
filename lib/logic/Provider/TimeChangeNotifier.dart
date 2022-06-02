@@ -28,5 +28,5 @@ class TimeChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  DTime get today => DTime(this._year, this._month, this._day);
+  DTime get today => DTime(_year, _month, _day);
 }

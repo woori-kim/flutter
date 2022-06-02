@@ -1,13 +1,9 @@
-import '../../util/constants.dart';
-import '../Subject/SubjectPool.dart';
+import 'package:flutter_application_1/logic/Consumer/TimeConsumer.dart';
+import 'package:flutter_application_1/logic/interface/ITimeSlave.dart';
 
-mixin TimeListen {
-  timeListen() {
-    var sp = SubjectPool();
-    var timesubject = sp.subjects[skTime];
-
-    timesubject.stream.listen((event) {
-      print('day change');
-    });
+mixin TimeListen{
+  timeListen(ITimeSlave newslave) {
+    TimeConsumer tc = TimeConsumer();
+    tc.addTimeSlave(newslave);
   }
 }
