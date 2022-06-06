@@ -1,10 +1,16 @@
+import 'dart:collection';
+
 import 'package:flutter_application_1/logic/Classes/mixin/mixin_timelisten.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_asset.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/logic/interface/i_timeslave.dart';
 
 class CObject extends ITimeSlave with TimeListen {
   //[todo] name
   //[todo] uuid
+
+  HashSet<DAsset> assetSet = HashSet();
+  
   CObject() {
     timeListen(this);
   }

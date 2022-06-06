@@ -5,10 +5,8 @@ import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
 import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 
 class CBank extends CObject with IBankService {
-  List<DAccount> bankAccountList = [];
-
   CBank() {
-    bankAccountList.add(DAccount(this,EAccountType.deposit));
+    assetSet.add(DAccount(this, EAccountType.deposit));
   }
 
   @override

@@ -11,4 +11,6 @@ abstract class IBankService {
    * transferCash()
    * raiseLoan()
    */
+
+  //[todo]need to currency? USD EUR JPY WON
 }
