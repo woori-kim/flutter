@@ -1,14 +1,14 @@
-import 'package:flutter_application_1/logic/Classes/CObject.dart';
-import 'package:flutter_application_1/logic/DataStructure/DAccount.dart';
-import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
-import 'package:flutter_application_1/logic/Enum/EAccountType.dart';
-import 'package:flutter_application_1/logic/interface/IBankService.dart';
+import 'package:flutter_application_1/logic/Classes/c_object.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_account.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
+import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
+import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 
 class CBank extends CObject with IBankService {
-  late List<DAccount> bankAccountList;
+  List<DAccount> bankAccountList = [];
 
   CBank() {
-    bankAccountList.add(DAccount(EAccountType.deposit));
+    bankAccountList.add(DAccount(this,EAccountType.deposit));
   }
 
   @override

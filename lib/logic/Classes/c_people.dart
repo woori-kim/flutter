@@ -1,5 +1,5 @@
-import 'package:flutter_application_1/logic/Classes/CObject.dart';
-import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
+import 'package:flutter_application_1/logic/Classes/c_object.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 
 class CPeople extends CObject {
   @override

@@ -1,7 +1,7 @@
-import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
-import 'package:flutter_application_1/logic/Subject/SubjectPool.dart';
-import 'package:flutter_application_1/logic/interface/ITime.dart';
-import 'package:flutter_application_1/logic/interface/ITimeSlave.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
+import 'package:flutter_application_1/logic/Subject/subject_pool.dart';
+import 'package:flutter_application_1/logic/interface/i_time.dart';
+import 'package:flutter_application_1/logic/interface/i_timeslave.dart';
 import 'package:flutter_application_1/util/constants.dart';
 
 class TimeConsumer extends ITime {

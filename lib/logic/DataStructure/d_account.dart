@@ -1,14 +1,14 @@
-import 'package:flutter_application_1/logic/Enum/EAccountType.dart';
+import 'package:flutter_application_1/logic/Classes/c_object.dart';
+import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
 import 'package:uuid/uuid.dart';
 
 class DAccount {
+  late final CObject owner;
   late String account;
   EAccountType type;
   BigInt balance = BigInt.from(0);
-  //[todo] people property를 가지고 있어야함 계좌의 주인정보 단순히 people객체를 readonly로 받을것인지 
-  //개인정보관련된 property class 를 만들것인지
 
-  DAccount(this.type) {
+  DAccount(this.owner,this.type) {
     const uuid = Uuid();
     account = uuid.v1();
   }

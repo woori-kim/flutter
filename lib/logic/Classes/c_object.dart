@@ -1,6 +1,6 @@
-import 'package:flutter_application_1/logic/Classes/TimeListen.dart';
-import 'package:flutter_application_1/logic/DataStructure/DTime.dart';
-import 'package:flutter_application_1/logic/interface/ITimeSlave.dart';
+import 'package:flutter_application_1/logic/Classes/mixin/mixin_timelisten.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
+import 'package:flutter_application_1/logic/interface/i_timeslave.dart';
 
 class CObject extends ITimeSlave with TimeListen {
   //[todo] name
