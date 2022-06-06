@@ -39,15 +39,16 @@ class DTime {
     return dayoftheweek;
   }
 
+  @override
   String toString() {
-    return '${this.year.toString()}/${this.month.toString()}/${this.day.toString()}/${this.dayoftheweek}요일';
+    return '${year.toString()}/${month.toString()}/${day.toString()}/$dayoftheweek요일';
   }
 
   // 윤년인지 체크
   void isLeapYear(int year) {
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
       monthDay[1] = 29;
-    else {
+    } else {
       //윤년이 아닌경우도 생각해줘야..
       monthDay[1] = 28;
     }
