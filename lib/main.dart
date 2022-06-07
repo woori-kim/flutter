@@ -10,10 +10,10 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(const MyApp());
 
-  //test code
-  CPeople();
-  CBank();
-  CCompany();
+  //test code backend run
+  CPeople("김인동");
+  CBank("우리은행");
+  CCompany("신유회사");
 }
 
 class MyApp extends StatelessWidget {

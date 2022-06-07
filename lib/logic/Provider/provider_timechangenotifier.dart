@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 
-import '../DataStructure/d_time.dart';
+
 
 class TimeChangeNotifier extends ChangeNotifier {
   int _day = 25;

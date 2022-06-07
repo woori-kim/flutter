@@ -4,15 +4,20 @@ import 'package:flutter_application_1/logic/Classes/mixin/mixin_timelisten.dart'
 import 'package:flutter_application_1/logic/DataStructure/d_asset.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/logic/interface/i_timeslave.dart';
+import 'package:uuid/uuid.dart';
 
 class CObject extends ITimeSlave with TimeListen {
   //[todo] name
   //[todo] uuid
 
+  late String name;
+  late String id;
   HashSet<DAsset> assetSet = HashSet();
-  
-  CObject() {
+
+  CObject(this.name) {
     timeListen(this);
+    const uuid = Uuid();
+    id = uuid.v1();
   }
 
   @override
