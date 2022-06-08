@@ -8,7 +8,7 @@ import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
 import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 
 class CBank extends CObject with IBankService {
-  HashSet<DBankClient> clientSet = HashSet();
+  final HashSet<DBankClient> _clientSet = HashSet();
 
   CBank(super.name) {
     assetSet.add(DAccount(this, EAccountType.deposit, this));
@@ -26,17 +26,17 @@ class CBank extends CObject with IBankService {
     DAccount newAccount = DAccount(newclient, type, this);
 
     //client안에 있으면 addnewaccount
-    for (var client in clientSet) {
+    for (var client in _clientSet) {
       if (client.client.id == newclient.id) {
-        client.accountSet.add(newAccount);
+        client.accounts.add(newAccount);
         return newAccount;
       }
     }
 
     //없으면 newclient + addnewaccount
     DBankClient newClient = DBankClient(newclient);
-    newClient.accountSet.add(newAccount);
-    clientSet.add(newClient);
+    newClient.accounts.add(newAccount);
+    _clientSet.add(newClient);
     return newAccount;
   }
 

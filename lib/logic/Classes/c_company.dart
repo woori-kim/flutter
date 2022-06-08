@@ -10,7 +10,7 @@ import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 import 'package:flutter_application_1/logic/interface/i_companyservice.dart';
 
 class CCompany extends CObject with ICompanyService {
-  HashSet<DCompanyMember> memberSet = HashSet();
+  final HashSet<DCompanyMember> _memberSet = HashSet();
 
   CCompany(super.name);
 
@@ -29,7 +29,7 @@ class CCompany extends CObject with ICompanyService {
       }
 
       IBankService bankservice = companySalaryAccount.bank;
-      for (var member in memberSet) {
+      for (var member in _memberSet) {
         bankservice.sendMoney(
             companySalaryAccount, member.account, BigInt.from(3000000));
       }
@@ -38,14 +38,14 @@ class CCompany extends CObject with ICompanyService {
 
   @override
   void joinCompany(final CPeople newmember, final DAccount salaryAccount) {
-    memberSet.add(DCompanyMember(newmember, salaryAccount));
+    _memberSet.add(DCompanyMember(newmember, salaryAccount));
   }
 
   @override
   void leaveCompany(final CPeople leavemember) {
-    for (var member in memberSet) {
+    for (var member in _memberSet) {
       if (member.people.id == leavemember.id) {
-        memberSet.remove(member);
+        _memberSet.remove(member);
         break;
       }
     }
