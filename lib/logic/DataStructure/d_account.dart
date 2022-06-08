@@ -1,22 +1,25 @@
+import 'package:flutter_application_1/logic/Classes/c_bank.dart';
 import 'package:flutter_application_1/logic/Classes/c_object.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_asset.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
 import 'package:uuid/uuid.dart';
 
 class DAccount extends DAsset {
-  late final CObject owner;
-  late String account;
-  EAccountType type;
+  final CObject _owner;
+  late final String _account;
+  final EAccountType _type;
+  final CBank _bank;
   BigInt balance = BigInt.from(0);
 
-  DAccount(this.owner, this.type) {
+  DAccount(this._owner, this._type, this._bank) {
     const uuid = Uuid();
-    account = uuid.v1();
+    _account = uuid.v1();
   }
 
-  CObject get accountOwner => owner;
-  EAccountType get accountType => type;
-  String get accountNumber => account;
+  CObject get owner => _owner;
+  EAccountType get type => _type;
+  String get accountNumber => _account;
+  CBank get bank => _bank;
   set addBalance(BigInt newbalance) => balance + newbalance;
   void subBalance(BigInt newbalance) {
     BigInt pre = balance - newbalance;

@@ -11,7 +11,7 @@ class CBank extends CObject with IBankService {
   HashSet<DBankClient> clientSet = HashSet();
 
   CBank(super.name) {
-    assetSet.add(DAccount(this, EAccountType.deposit));
+    assetSet.add(DAccount(this, EAccountType.deposit, this));
   }
 
   @override
@@ -23,7 +23,7 @@ class CBank extends CObject with IBankService {
 
   @override
   DAccount makeNewAccount(CObject newclient, EAccountType type) {
-    DAccount newAccount = DAccount(newclient, type);
+    DAccount newAccount = DAccount(newclient, type, this);
 
     //client안에 있으면 addnewaccount
     for (var client in clientSet) {
