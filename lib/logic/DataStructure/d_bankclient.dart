@@ -5,7 +5,7 @@ import 'package:flutter_application_1/logic/DataStructure/d_account.dart';
 
 class DBankClient {
   final CObject _client;
-  HashSet<DAccount> _accountSet = HashSet();
+  final HashSet<DAccount> _accountSet = HashSet();
 
   DBankClient(this._client);
 
