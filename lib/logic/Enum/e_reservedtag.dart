@@ -1,0 +1,3 @@
+enum ETag{
+  none, mainsalary,
+}

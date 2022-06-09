@@ -5,8 +5,8 @@ import 'package:flutter_application_1/logic/Classes/c_country.dart';
 import 'package:flutter_application_1/logic/Classes/c_people.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_account.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
+import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/Provider/provider_timechangenotifier.dart';
-import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 import 'package:flutter_application_1/ui/dashboard/mainscreen.dart';
 import 'package:flutter_application_1/util/constants.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +22,14 @@ void main() {
   rok.centralBank.releaseMoney(wrbank, BigInt.from(10000000));
 
   CPeople indong = CPeople("김인동");
-  final DAccount salaryaccount =
+  DAccount salaryaccount =
       wrbank.makeNewAccount(indong, EAccountType.deposit);
-  
+  salaryaccount.identifyTag = ETag.mainsalary;
+
   CCompany stppp = CCompany("신유회사");
-  wrbank.makeNewAccount(stppp, EAccountType.deposit);
+  DAccount companymaindepositaccount =
+      wrbank.makeNewAccount(stppp, EAccountType.deposit);
+  companymaindepositaccount.identifyTag = ETag.mainsalary;
   //[todo]은행한테 대출해야됨
   stppp.joinCompany(indong, salaryaccount);
 }
