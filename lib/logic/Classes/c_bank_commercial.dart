@@ -55,4 +55,9 @@ class CBCommercial extends CBank implements IBankService {
 
     return true;
   }
+  
+  @override
+  void raiseLoan(DAccount account, BigInt amount, int loanMonth, int repaymentDay) {
+    // TODO: implement raiseLoan
+  }
 }

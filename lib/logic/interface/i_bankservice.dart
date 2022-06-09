@@ -5,6 +5,7 @@ import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
 abstract class IBankService {
   DAccount makeNewAccount(CObject newclient, EAccountType type);
   bool sendMoney(DAccount source, DAccount destination, BigInt won);
+  void raiseLoan(DAccount account, BigInt amount , int loanMonth,int repaymentDay);
   /**
    * withdrawCash()//[todo] cash 현금 자산 클래스 필요
    * transferCash()
