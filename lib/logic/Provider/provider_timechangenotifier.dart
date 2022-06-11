@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
+import 'package:flutter_application_1/util/constants.dart';
 
 
 
 class TimeChangeNotifier extends ChangeNotifier {
-  int _day = 25;
-  int _month = 5;
-  int _year = 2022;
+  int _day = initialDay;
+  int _month = initialMonth;
+  int _year = initialYear;
 
   final lastDay = <int>[31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 

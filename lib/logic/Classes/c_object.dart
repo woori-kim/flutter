@@ -3,13 +3,15 @@ import 'dart:collection';
 import 'package:flutter_application_1/logic/Classes/mixin/mixin_timelisten.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_asset.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
+import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/interface/i_timeslave.dart';
 import 'package:uuid/uuid.dart';
 
-class CObject extends ITimeSlave with TimeListen {
+class CObject with TimeListen implements ITimeSlave {
   late String name;
   late String id;
   HashSet<DAsset> assetSet = HashSet();
+  HashMap<ETag, DAsset> propertyMap = HashMap();
 
   CObject(this.name) {
     timeListen(this);

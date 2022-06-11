@@ -1,3 +1,3 @@
 enum ETag{
-  none, mainsalary,
+  mainaccount,
 }

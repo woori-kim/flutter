@@ -13,7 +13,8 @@ class SubjectPool {
   HashMap subjectPool = HashMap<String, Subject>();
 
   SubjectPool._internalConstructor() {
-    subjectPool.putIfAbsent(skTime, () => PublishSubject());
+    subjectPool[skTime] = PublishSubject();
+    subjectPool[skInterest] = PublishSubject();
   }
 
   HashMap get subjects => subjectPool;

@@ -6,6 +6,10 @@ import 'package:flutter_application_1/util/constants.dart';
 
 class TimeConsumer extends ITime {
   static final TimeConsumer _instance = TimeConsumer._internalConstructor();
+  DTime _today = DTime(initialYear, initialMonth, initialDay);
+  final List<ITimeSlave> _timeslaves = [];
+
+  DTime get today => _today;
 
   factory TimeConsumer() {
     return _instance;
@@ -13,24 +17,22 @@ class TimeConsumer extends ITime {
 
   TimeConsumer._internalConstructor() {
     var sp = SubjectPool();
-    var timesubject = sp.subjects[skTime];
 
-    timesubject.stream.listen((event) {
+    sp.subjects[skTime].stream.listen((event) {
       updateTime(event);
     });
   }
 
-  List<ITimeSlave> timeslaves = [];
-
   @override
   void addTimeSlave(ITimeSlave newslave) {
-    timeslaves.add(newslave);
+    _timeslaves.add(newslave);
   }
 
   @override
   void updateTime(DTime newTime) {
-    for (var element in timeslaves) {
-      element.dayChange(newTime);
+    _today = newTime;
+    for (var slave in _timeslaves) {
+      slave.dayChange(newTime);
     }
   }
 }

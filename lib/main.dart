@@ -22,14 +22,13 @@ void main() {
   rok.centralBank.releaseMoney(wrbank, BigInt.from(10000000));
 
   CPeople indong = CPeople("김인동");
-  DAccount salaryaccount =
-      wrbank.makeNewAccount(indong, EAccountType.deposit);
-  salaryaccount.identifyTag = ETag.mainsalary;
+  DAccount salaryaccount = wrbank.makeNewAccount(indong, EAccountType.deposit);
+  indong.propertyMap[ETag.mainaccount] = salaryaccount;
 
   CCompany stppp = CCompany("신유회사");
   DAccount companymaindepositaccount =
       wrbank.makeNewAccount(stppp, EAccountType.deposit);
-  companymaindepositaccount.identifyTag = ETag.mainsalary;
+  stppp.propertyMap[ETag.mainaccount] = companymaindepositaccount;
   //[todo]은행한테 대출해야됨
   stppp.joinCompany(indong, salaryaccount);
 }
