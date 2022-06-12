@@ -8,6 +8,7 @@ import 'package:flutter_application_1/logic/DataStructure/d_account_loan.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_bankclient.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
+import 'package:flutter_application_1/logic/Enum/e_loantype.dart';
 import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 import 'package:flutter_application_1/logic/interface/i_interestuser.dart';
@@ -16,10 +17,9 @@ class CBCommercial extends CBank
     with InterestListen
     implements IBankService, IInterestClient {
   final HashSet<DBankClient> _clientSet = HashSet();
-  double _baseInterestRate = 0.0;
   double _spreadInterestRate = 0.0;
 
-  CBCommercial(super.name) {
+  CBCommercial(super.belong, super.name) {
     interestListen(this);
 
     DAccount mainAccount = DAccount(this, EAccountType.deposit, this);
@@ -71,7 +71,7 @@ class CBCommercial extends CBank
 
   @override
   void raiseLoan(DLoanAccount loanAccount, BigInt amount, int loanMonth,
-      int repaymentDay) {
+      int repaymentDay, ELoanType type) {
     if (loanAccount.bank != this) {
       //해당은행계좌가 아니므로 대출 불가
       return;
@@ -82,16 +82,14 @@ class CBCommercial extends CBank
       return;
     }
 
-    //[todo] 빌려주는 amount를 은행 잔고의 지급준비율을 제외한 한도내에서 빌려줘야한다.
+    //[todo] if 빌려주는 amount를 은행 잔고의 지급준비율을 제외한 한도내에서 빌려줘야한다.
     loanAccount.addBalance = amount;
-    loanAccount.setLoanData(loanMonth, amount, repaymentDay);
-    //베이스 이자+ 이자 listen하는 은행들
-    //베이스+ 은행 각각 이자 정보 합해서 setloandata에 넘겨주기
+    loanAccount.setLoanData(loanMonth, amount, repaymentDay,type);
   }
 
   @override
   void interestChange(double newinterestrate) {
-    _baseInterestRate = newinterestrate;
+    //_baseInterestRate = newinterestrate;
     //[todo]잘못만든거 같다 그냥 필요할때 central에서 가져오면되는데
     //interest부분 지우고 추후에 central변경에 대해서 commercial이 변경되야되는경우가 있을경우가 대비해서 살려두겟음
   }

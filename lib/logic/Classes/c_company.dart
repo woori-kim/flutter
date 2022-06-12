@@ -13,7 +13,7 @@ import 'package:flutter_application_1/logic/interface/i_companyservice.dart';
 class CCompany extends CObject with ICompanyService {
   final HashSet<DCompanyMember> _memberSet = HashSet();
 
-  CCompany(super.name);
+  CCompany(super.belong,super.name);
 
   @override
   void dayChange(DTime newTime) {

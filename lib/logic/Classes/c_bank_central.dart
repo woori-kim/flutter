@@ -12,7 +12,7 @@ class CBCentral extends CBank {
 
   double get baseInterestRate => _baseInterestRate;
 
-  CBCentral(super.name);
+  CBCentral(super.belong,super.name);
 
   void issueMoney(BigInt amount) {
     balance += amount;
