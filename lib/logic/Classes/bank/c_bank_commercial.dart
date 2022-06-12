@@ -8,6 +8,7 @@ import 'package:flutter_application_1/logic/DataStructure/d_account_loan.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_bankclient.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
+import 'package:flutter_application_1/logic/Enum/e_interesttype.dart';
 import 'package:flutter_application_1/logic/Enum/e_loantype.dart';
 import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
@@ -17,7 +18,7 @@ class CBCommercial extends CBank
     with InterestListen
     implements IBankService, IInterestClient {
   final HashSet<DBankClient> _clientSet = HashSet();
-  double _spreadInterestRate = 0.0;
+  double _spreadInterestRate = 2.0;
 
   CBCommercial(super.belong, super.name) {
     interestListen(this);
@@ -37,7 +38,23 @@ class CBCommercial extends CBank
         if (account.type == EAccountType.loan) {
           DLoanAccount loanaccount = account as DLoanAccount;
           if (loanaccount.repaymentDay == newTime.day) {
-            print('대출가져감');
+            if (loanaccount.loanType == ELoanType.levelpayment) {
+              if (loanaccount.repaymentPlan.isEmpty) {
+                //상환완료 계좌
+                continue;
+              }
+              //빼가고
+              BigInt oldestPlan = loanaccount.repaymentPlan.removeAt(0);
+              BigInt interest = BigInt.from(
+                  loanaccount.repaymentDuty.toDouble() *
+                      (todayInterest / 100) /
+                      12);
+              BigInt thisround = oldestPlan + interest;
+              print('원금 $oldestPlan , 이자 $interest 지급');
+              //todayinterest %니까 /100해줘야됨
+              loanaccount.subBalance(thisround);
+              print('loanaccount balance = ${loanaccount.balance}');
+            }
           }
         }
       }
@@ -46,7 +63,21 @@ class CBCommercial extends CBank
 
   @override
   DAccount makeNewAccount(CObject newclient, EAccountType type) {
-    DAccount newAccount = DAccount(newclient, type, this);
+    late DAccount newAccount;
+    switch (type) {
+      case EAccountType.deposit:
+        newAccount = DAccount(newclient, type, this);
+        break;
+      case EAccountType.loan:
+        newAccount = DLoanAccount(newclient, type, this);
+        break;
+      case EAccountType.saving:
+        break;
+      case EAccountType.minus:
+        break;
+      default:
+        newAccount = DAccount(newclient, type, this);
+    }
 
     newclient.assetSet.add(newAccount);
     //client안에 있으면 addnewaccount
@@ -81,7 +112,7 @@ class CBCommercial extends CBank
 
   @override
   void raiseLoan(DLoanAccount loanAccount, BigInt amount, int loanMonth,
-      int repaymentDay, ELoanType type) {
+      int repaymentDay, ELoanType loanType, EInterestType interestType) {
     if (loanAccount.bank != this) {
       //해당은행계좌가 아니므로 대출 불가
       return;
@@ -94,7 +125,11 @@ class CBCommercial extends CBank
 
     //[todo] if 빌려주는 amount를 은행 잔고의 지급준비율을 제외한 한도내에서 빌려줘야한다.
     loanAccount.addBalance = amount;
-    loanAccount.setLoanData(loanMonth, amount, repaymentDay, type);
+    print('대출받음 - ${loanAccount.balance.toString()}');
+    double todayInterest =
+        belong.centralBank.baseInterestRate + _spreadInterestRate;
+    loanAccount.setLoanData(
+        loanMonth, amount, repaymentDay, loanType, interestType, todayInterest);
   }
 
   @override

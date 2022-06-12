@@ -20,7 +20,7 @@ class DAccount extends DAsset {
   EAccountType get type => _type;
   String get accountNumber => _account;
   CBCommercial get bank => _bank;
-  set addBalance(BigInt newbalance) => balance + newbalance;
+  set addBalance(BigInt newbalance) => balance += newbalance;
   void subBalance(BigInt newbalance) {
     BigInt pre = balance - newbalance;
     if (pre.isNegative) {

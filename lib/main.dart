@@ -4,7 +4,10 @@ import 'package:flutter_application_1/logic/Classes/c_company.dart';
 import 'package:flutter_application_1/logic/Classes/c_country.dart';
 import 'package:flutter_application_1/logic/Classes/c_people.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_account.dart';
+import 'package:flutter_application_1/logic/DataStructure/d_account_loan.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';
+import 'package:flutter_application_1/logic/Enum/e_interesttype.dart';
+import 'package:flutter_application_1/logic/Enum/e_loantype.dart';
 import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/Provider/provider_timechangenotifier.dart';
 import 'package:flutter_application_1/ui/dashboard/mainscreen.dart';
@@ -16,10 +19,10 @@ void main() {
 
   //test code backend run
   CCountry rok = CCountry("대한민국");
-  rok.centralBank.issueMoney(BigInt.from(100000000));
+  rok.centralBank.issueMoney(BigInt.from(1000000000000)); //1조
 
   CBCommercial wrbank = CBCommercial(rok, "우리은행");
-  rok.centralBank.releaseMoney(wrbank, BigInt.from(10000000));
+  rok.centralBank.releaseMoney(wrbank, BigInt.from(100000000000)); //1000억
 
   CPeople indong = CPeople(rok, "김인동");
   DAccount salaryaccount = wrbank.makeNewAccount(indong, EAccountType.deposit);
@@ -29,7 +32,12 @@ void main() {
   DAccount companymaindepositaccount =
       wrbank.makeNewAccount(stppp, EAccountType.deposit);
   stppp.propertyMap[ETag.mainaccount] = companymaindepositaccount;
-  //[todo]은행한테 대출해야됨
+  DLoanAccount companyLoanAccount =
+      wrbank.makeNewAccount(stppp, EAccountType.loan) as DLoanAccount;
+  wrbank.raiseLoan(companyLoanAccount, BigInt.from(10000000000) /**100억 */, 120,
+      26, ELoanType.levelpayment, EInterestType.floating);
+  wrbank.sendMoney(companyLoanAccount, companymaindepositaccount,
+      BigInt.from(1000000000)); //10억
   stppp.joinCompany(indong, salaryaccount);
 }
 
