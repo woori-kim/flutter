@@ -1,7 +1,7 @@
 import 'dart:collection';
 
-import 'package:flutter_application_1/logic/Classes/c_bank.dart';
-import 'package:flutter_application_1/logic/Classes/c_bank_central.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank_central.dart';
 import 'package:flutter_application_1/logic/Classes/c_company.dart';
 
 class CCountry {

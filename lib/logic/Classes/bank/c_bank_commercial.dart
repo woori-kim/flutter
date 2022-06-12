@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:flutter_application_1/logic/Classes/c_bank.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank.dart';
 import 'package:flutter_application_1/logic/Classes/c_object.dart';
 import 'package:flutter_application_1/logic/Classes/mixin/mixin_interestlisten.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_account.dart';
@@ -29,8 +29,18 @@ class CBCommercial extends CBank
 
   @override
   void dayChange(DTime newTime) {
-    if (newTime.day == 5) {
-      print('CBank - 대출이자 가져가는날임');
+    //금일 이자 계산
+    double todayInterest =
+        belong.centralBank.baseInterestRate + _spreadInterestRate;
+    for (var client in _clientSet) {
+      for (var account in client.accounts) {
+        if (account.type == EAccountType.loan) {
+          DLoanAccount loanaccount = account as DLoanAccount;
+          if (loanaccount.repaymentDay == newTime.day) {
+            print('대출가져감');
+          }
+        }
+      }
     }
   }
 

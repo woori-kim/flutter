@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/logic/Classes/c_bank_commercial.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank_commercial.dart';
 import 'package:flutter_application_1/logic/Classes/c_object.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_asset.dart';
 import 'package:flutter_application_1/logic/Enum/e_accounttype.dart';

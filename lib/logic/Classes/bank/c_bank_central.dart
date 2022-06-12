@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/logic/Classes/c_bank.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank.dart';
 import 'package:flutter_application_1/logic/Consumer/consumer_time.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_carttaker.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_history_centralbank.dart';

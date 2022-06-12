@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/logic/Classes/c_bank_commercial.dart';
+import 'package:flutter_application_1/logic/Classes/bank/c_bank_commercial.dart';
 import 'package:flutter_application_1/logic/Classes/c_company.dart';
 import 'package:flutter_application_1/logic/Classes/c_country.dart';
 import 'package:flutter_application_1/logic/Classes/c_people.dart';
