@@ -1,2 +1,1 @@
-class DAsset {
-}
+class DAsset {}

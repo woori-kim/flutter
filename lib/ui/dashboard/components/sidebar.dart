@@ -17,14 +17,16 @@ class SideBar extends StatelessWidget {
             title: const Text("Dashboard"),
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Dashboard'), duration: Duration(milliseconds: 500)));
+                  content: Text('Dashboard'),
+                  duration: Duration(milliseconds: 500)));
             },
           ),
           ListTile(
             title: const Text("Command"),
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Command'), duration: Duration(milliseconds: 500)));
+                  content: Text('Command'),
+                  duration: Duration(milliseconds: 500)));
             },
           ),
           ListTile(

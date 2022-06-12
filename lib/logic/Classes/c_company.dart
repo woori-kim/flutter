@@ -13,13 +13,14 @@ import 'package:flutter_application_1/logic/interface/i_companyservice.dart';
 class CCompany extends CObject with ICompanyService {
   final HashSet<DCompanyMember> _memberSet = HashSet();
 
-  CCompany(super.belong,super.name);
+  CCompany(super.belong, super.name);
 
   @override
   void dayChange(DTime newTime) {
     if (newTime.day == 25) {
       print('CCompany - CPeople한테 월급 주는날');
-      late final DAccount companySalaryAccount = propertyMap[ETag.mainaccount] as DAccount;
+      late final DAccount companySalaryAccount =
+          propertyMap[ETag.mainaccount] as DAccount;
 
       IBankService bankservice = companySalaryAccount.bank;
       for (var member in _memberSet) {

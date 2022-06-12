@@ -11,7 +11,7 @@ class CCountry {
   final HashSet<CCompany> _companys = HashSet();
 
   CCountry(this._name) {
-    _centralBank = CBCentral(this,"중앙은행");
+    _centralBank = CBCentral(this, "중앙은행");
   }
 
   HashSet<CBank> get banks => _banks;

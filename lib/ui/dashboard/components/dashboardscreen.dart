@@ -4,7 +4,6 @@ import 'package:flutter_application_1/logic/Subject/subject_pool.dart';
 import 'package:flutter_application_1/util/constants.dart';
 import 'package:provider/provider.dart';
 
-
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
   @override

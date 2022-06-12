@@ -2,8 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/util/constants.dart';
 
-
-
 class TimeChangeNotifier extends ChangeNotifier {
   int _day = initialDay;
   int _month = initialMonth;

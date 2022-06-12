@@ -4,7 +4,7 @@ import 'package:flutter_application_1/logic/DataStructure/d_time.dart';
 import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 
 class CPeople extends CObject {
-  CPeople(super.belong,super.name);
+  CPeople(super.belong, super.name);
 
   @override
   void dayChange(DTime newTime) {

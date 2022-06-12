@@ -15,7 +15,7 @@ class CObject with TimeListen implements ITimeSlave {
   HashSet<DAsset> assetSet = HashSet();
   HashMap<ETag, DAsset> propertyMap = HashMap();
 
-  CObject(this.belong , this.name) {
+  CObject(this.belong, this.name) {
     timeListen(this);
     const uuid = Uuid();
     id = uuid.v1();

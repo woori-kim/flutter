@@ -1,3 +1,3 @@
-enum ETag{
+enum ETag {
   mainaccount,
 }

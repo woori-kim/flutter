@@ -84,7 +84,7 @@ class CBCommercial extends CBank
 
     //[todo] if 빌려주는 amount를 은행 잔고의 지급준비율을 제외한 한도내에서 빌려줘야한다.
     loanAccount.addBalance = amount;
-    loanAccount.setLoanData(loanMonth, amount, repaymentDay,type);
+    loanAccount.setLoanData(loanMonth, amount, repaymentDay, type);
   }
 
   @override

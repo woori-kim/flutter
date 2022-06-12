@@ -18,14 +18,14 @@ void main() {
   CCountry rok = CCountry("대한민국");
   rok.centralBank.issueMoney(BigInt.from(100000000));
 
-  CBCommercial wrbank = CBCommercial(rok,"우리은행");
+  CBCommercial wrbank = CBCommercial(rok, "우리은행");
   rok.centralBank.releaseMoney(wrbank, BigInt.from(10000000));
 
-  CPeople indong = CPeople(rok,"김인동");
+  CPeople indong = CPeople(rok, "김인동");
   DAccount salaryaccount = wrbank.makeNewAccount(indong, EAccountType.deposit);
   indong.propertyMap[ETag.mainaccount] = salaryaccount;
 
-  CCompany stppp = CCompany(rok,"신유회사");
+  CCompany stppp = CCompany(rok, "신유회사");
   DAccount companymaindepositaccount =
       wrbank.makeNewAccount(stppp, EAccountType.deposit);
   stppp.propertyMap[ETag.mainaccount] = companymaindepositaccount;

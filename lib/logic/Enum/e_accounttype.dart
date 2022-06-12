@@ -1,3 +1,1 @@
-enum EAccountType{
-  deposit,loan,saving,minus
-}
+enum EAccountType { deposit, loan, saving, minus }

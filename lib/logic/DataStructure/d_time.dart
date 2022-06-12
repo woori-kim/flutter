@@ -92,7 +92,7 @@ class DTime {
       }
       //일 차 계산
       totalDay += day - 1;
-      dayoftheweek = strDay[(totalDay + 6) % 7];//6은 토요일 인덱스
+      dayoftheweek = strDay[(totalDay + 6) % 7]; //6은 토요일 인덱스
     }
   }
 }
