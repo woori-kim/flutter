@@ -13,6 +13,7 @@ import 'package:flutter_application_1/logic/Enum/e_loantype.dart';
 import 'package:flutter_application_1/logic/Enum/e_reservedtag.dart';
 import 'package:flutter_application_1/logic/interface/i_bankservice.dart';
 import 'package:flutter_application_1/logic/interface/i_interestuser.dart';
+import 'package:flutter_application_1/util/u_currency.dart';
 
 class CBCommercial extends CBank
     with InterestListen
@@ -50,7 +51,8 @@ class CBCommercial extends CBank
                       (todayInterest / 100) /
                       12);
               BigInt thisround = oldestPlan + interest;
-              print('원금 $oldestPlan , 이자 $interest 지급');
+              print(
+                  '원금 ${UCurrency().toCurrencyString(oldestPlan, false)} , 이자 ${UCurrency().toCurrencyString(interest, false)} 지급');
               //todayinterest %니까 /100해줘야됨
               loanaccount.subBalance(thisround);
               print('loanaccount balance = ${loanaccount.balance}');

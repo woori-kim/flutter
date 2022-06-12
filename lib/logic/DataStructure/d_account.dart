@@ -9,7 +9,7 @@ class DAccount extends DAsset {
   late final String _account;
   final EAccountType _type;
   final CBCommercial _bank;
-  BigInt balance = BigInt.from(0);
+  BigInt balance = BigInt.zero;
 
   DAccount(this._owner, this._type, this._bank) {
     const uuid = Uuid();

@@ -4,7 +4,7 @@ import 'package:flutter_application_1/logic/Enum/e_loantype.dart';
 
 class DLoanAccount extends DAccount {
   int _loanPeriod = 0; //총 대출기간
-  BigInt _repaymentDuty = BigInt.from(0); //총 대출금액
+  BigInt _repaymentDuty = BigInt.zero; //총 대출금액
   int _repaymentDay = 0; // 대출상환일
   ELoanType _loantype = ELoanType.init;
   EInterestType _interestType = EInterestType.init;
