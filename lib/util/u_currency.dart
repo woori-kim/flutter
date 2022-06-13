@@ -72,10 +72,8 @@ class UCurrency {
 
   String toCurrencyString(BigInt money, bool isAllkorean) {
     String str = money.toString();
-
     String result = "";
     int len = str.length;
-
     const int billlimit = 16; //1000trillion
     bool bOverflow = false;
     if (len > billlimit) {
@@ -151,9 +149,11 @@ class UCurrency {
       }
     }
 
-    if (result.isNotEmpty) {
-      result = '$result\uC6D0';
+    if (result.isEmpty) {
+      result = '0';
     }
+
+    result = '$result\uC6D0';
 
     return result;
   }

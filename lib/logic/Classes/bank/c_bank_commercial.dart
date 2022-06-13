@@ -55,7 +55,7 @@ class CBCommercial extends CBank
                   '원금 ${UCurrency().toCurrencyString(oldestPlan, false)} , 이자 ${UCurrency().toCurrencyString(interest, false)} 지급');
               //todayinterest %니까 /100해줘야됨
               loanaccount.subBalance(thisround);
-              print('loanaccount balance = ${loanaccount.balance}');
+              print('계좌번호 ${loanaccount.accountNumber} 대출계좌 잔액 = ${UCurrency().toCurrencyString(loanaccount.balance, false)}');
             }
           }
         }
@@ -127,7 +127,7 @@ class CBCommercial extends CBank
 
     //[todo] if 빌려주는 amount를 은행 잔고의 지급준비율을 제외한 한도내에서 빌려줘야한다.
     loanAccount.addBalance = amount;
-    print('대출받음 - ${loanAccount.balance.toString()}');
+    print('대출받음 - ${UCurrency().toCurrencyString(loanAccount.balance, false)}');
     double todayInterest =
         belong.centralBank.baseInterestRate + _spreadInterestRate;
     loanAccount.setLoanData(
