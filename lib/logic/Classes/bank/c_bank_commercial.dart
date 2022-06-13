@@ -21,6 +21,10 @@ class CBCommercial extends CBank
   final HashSet<DBankClient> _clientSet = HashSet();
   double _spreadInterestRate = 2.0;
 
+  double get spreadInterestRate => _spreadInterestRate;
+  set setInterestRate(double newSpreadInterestRate) =>
+      _spreadInterestRate = newSpreadInterestRate;
+
   CBCommercial(super.belong, super.name) {
     interestListen(this);
 
@@ -46,6 +50,9 @@ class CBCommercial extends CBank
               }
               //빼가고
               BigInt oldestPlan = loanaccount.repaymentPlan.removeAt(0);
+              if (loanaccount.interestType == EInterestType.fixed) {
+                todayInterest = loanaccount.interestRate;
+              }
               BigInt interest = BigInt.from(
                   loanaccount.repaymentDuty.toDouble() *
                       (todayInterest / 100) /
@@ -55,7 +62,8 @@ class CBCommercial extends CBank
                   '원금 ${UCurrency().toCurrencyString(oldestPlan, false)} , 이자 ${UCurrency().toCurrencyString(interest, false)} 지급');
               //todayinterest %니까 /100해줘야됨
               loanaccount.subBalance(thisround);
-              print('계좌번호 ${loanaccount.accountNumber} 대출계좌 잔액 = ${UCurrency().toCurrencyString(loanaccount.balance, false)}');
+              print(
+                  '계좌번호 ${loanaccount.accountNumber} 대출계좌 잔액 = ${UCurrency().toCurrencyString(loanaccount.balance, false)}');
             }
           }
         }

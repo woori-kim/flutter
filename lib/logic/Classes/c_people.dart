@@ -14,6 +14,7 @@ class CPeople extends CObject {
     }
 
     final DAccount mainaccount = propertyMap[ETag.mainaccount] as DAccount;
-    print('${newTime.day}일 잔액 : ${UCurrency().toCurrencyString(mainaccount.balance, false)}');
+    print(
+        '${newTime.day}일 잔액 : ${UCurrency().toCurrencyString(mainaccount.balance, false)}');
   }
 }
